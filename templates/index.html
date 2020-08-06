@@ -1,0 +1,110 @@
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}" />
+  <link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/authy-form-helpers/2.3/form.authy.min.css" data-turbolinks-track="reload" />
+  <style>
+    .btn-outline-success1 {
+      color: #186329;
+      background-color: transparent;
+      background-image: none;
+      border-color: #186329;
+    }
+  </style>
+
+  <!-- <script src="{{ url_for('static', filename='js/custom.js')}}"></script> -->
+  <title>Teaching Assistant</title>
+</head>
+
+<body scroll="no">
+  <h3 style="align-self:left"></h3>
+  <br />
+
+  <div class="container h-100">
+    <div class="container text-center">
+      <h4 class="text-monospace" tabindex='0'> Olivia Cortez - Your faithful TA for {{course_name}} Course</h4>
+    </div>
+    <div class="row align-items-center h-100">
+      <div class="col-md-8 col-sm-12 mx-auto">
+
+        <div class="h-100 justify-content-center">
+
+          <div class="chat-container" style="overflow: auto; max-height: 55vh">
+            <div class="chat-message bot-message rcorners1" id="bMsg" tabindex='0'>
+
+              OLIVIA: Hello, {{greeting}} {{name}}!! I am here to answer some of your questions related to your {{course_name}} course.
+            </div>
+
+
+            <div class="chat-message bot-message rcorners1" name="div_phone_verification" id="div_phone_verification" tabindex='0' style="display:none">
+              <h1>Verify your phone number</h1>
+              <form>
+                <div>
+                  <label for="authy-countries">Country code:</label>
+                  <select name="country_code" id="authy-countries" data-show-as="number"></select>
+                </div>
+                <div>
+                  <label for="phone_number">Phone number:</label>
+                  <input type="tel" name="phone_number" id="phone_number" />
+                </div>
+                <div>
+                  <p>Verification method</p>
+                  <label for="method_sms">SMS: </label>
+                  <input type="radio" name="method" id="method_sms" value="sms" />
+                  <label for="method_call">Call: </label>
+                  <input type="radio" name="method" id="method_call" value="call" />
+                </div>
+                <input type="submit" name="btn_phone_verification_code" id="btn_phone_verification_code" value="send code" />
+              </form>
+            </div>
+
+          </div>
+          <form id="target">
+            <input class="input" type="text" value="" placeholder="Type in your question here for Olivia..." id="input_message" />
+            <input type="submit" hidden>
+          </form>
+        </div>
+
+
+
+        <form>
+          <button type="button" class="btn btn-info" onclick="myFunction()">SMS</button>
+        </form>
+
+
+
+        <h6 class="h6" tabindex="0" style=" color:lightgray; font-size:small">For any questions, issues, or concerns please contact online@csueastbay.edu</h6>
+      </div>
+
+
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/authy-form-helpers/2.3/form.authy.min.js" data-turbolinks-track="reload"></script>
+    <!-- <script src="static/js/verify.js"></script> -->
+    <script src="{{ url_for('static', filename='js/verify.js') }}"></script>
+
+    <!--  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>-->
+
+    <script>
+      function myFunction() {
+        var x = document.getElementById("div_phone_verification");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        }
+      }
+    </script>
+</body>
+
+</html>
